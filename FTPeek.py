@@ -1,7 +1,9 @@
 from FTPDL import monitor_ftp,regenerate_downloaded_files_pickle
+from AsynFTPDL import main
 import time
+import asyncio
 
-version = "0.0.1"
+version = "0.0.2"
 def interactive_mode():
     print("     ____   __ __       _             ")
     print("    / __ \ / //_/___   (_)____   _____")
@@ -17,6 +19,7 @@ def interactive_mode():
         print("\nSelect a module to run:")
         print("1. Monitor FTP")
         print("2. Regenerate PKL File Tracker")
+        print("3. Run Async FTP Monitor (Beta)")
         choice = input("Enter your choice: ")
         if choice == "1":
             webpls = input("Enter Discord Webhook (If applicable)")
@@ -33,6 +36,8 @@ def interactive_mode():
         elif choice =="2":
             print("Regenerating PKL File, please wait...")
             regenerate_downloaded_files_pickle()
+        elif choice =="3":
+            asyncio.run(main())
 
 
 
